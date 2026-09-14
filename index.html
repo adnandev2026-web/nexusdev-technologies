@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#00f5ff">
+<link rel="apple-touch-icon" href="icon-192.png">
+<script>
+  if ("serviceWorker" in navigator) {
+    navigator.serviceWorker.register("sw.js");
+  }
+</script>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>NEXUSDEV TECHNOLOGIES | Adnan Ahmad</title>
+<meta name="description" content="NexusDev Technologies - Future Robotics & AI Research, Custom Builds, Components Store" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<div id="preloader"><div class="loader-logo">NEXUSDEV</div><div class="loader-bar"><span></span></div><p>Initializing AI Systems...</p></div>
+<div id="scroll-progress"></div>
+<div id="cursor-glow"></div>
+
+<a href="https://wa.me/918281349340?text=Hi%20Adnan!%20I%20visited%20NexusDev%20Technologies%20and%20I%20want%20to%20order%20a%20project%20/%20component." target="_blank" class="floating-wa-btn" title="Chat on WhatsApp">💬</a>
+<button id="ai-helper-btn" onclick="toggleAiHelper()" title="Ask Nexus AI">✨ AI</button>
+
+<div id="ai-modal">
+  <div class="ai-modal-header"><span>🤖 NEXUS AI Assistant</span><button onclick="toggleAiHelper()">✕</button></div>
+  <div id="ai-chat-box"><div class="ai-msg">Hi! I'm Nexus AI. Ask me about prices, Arduino, delivery, or science fair packs.</div></div>
+  <div class="ai-input-row"><input id="ai-input" placeholder="Ask about projects..." onkeypress="if(event.key==='Enter')sendAiMessage()"/><button onclick="sendAiMessage()">➤</button></div>
+</div>
+
+<header class="hero">
+<canvas id="ai-canvas"></canvas>
+<div class="hero-overlay"></div>
+<div class="hero-content">
+<svg class="header-logo" viewBox="0 0 100 100" fill="none"><circle cx="50" cy="50" r="45" stroke="#00f5ff" stroke-width="3"/><polygon points="50,15 80,80 50,65 20,80" fill="#00f5ff" opacity="0.85"/><circle cx="50" cy="40" r="8" fill="#030712" stroke="#00f5ff" stroke-width="2"/></svg>
+<h1>NEXUSDEV <span class="grad-text">TECHNOLOGIES</span></h1>
+<p><span id="typing-text"></span><span class="typing-cursor">|</span></p>
+<div class="hero-badges"><span>⚡ Arduino</span><span>🤖 AI & Robotics</span><span>🛒 Custom Builds</span><span>🎓 Science Fair</span></div>
+<div class="hero-btns"><a href="#projects" onclick="showMainPage()">Explore Builds</a><a href="#free-build-box" onclick="showMainPage()" class="gold">Write Custom Order</a></div>
+</div>
+<div class="scanline"></div>
+</header>
+
+<nav id="mainNav">
+<a href="#leadership" onclick="showMainPage()">Leadership</a>
+<a href="#projects" onclick="showMainPage()">Builds</a>
+<a href="#science-fair" onclick="showMainPage()">🎓 Fair Packs</a>
+<a href="#components-store" onclick="showMainPage()">🛒 Components</a>
+<a href="#free-build-box" onclick="showMainPage()" style="border:1px solid #ffbe0b;color:#ffbe0b">✏️ Write Anything</a>
+<a href="#custom-request" onclick="showMainPage()">Custom Software</a>
+<a class="admin-nav" onclick="accessSubmissions()">🔒 Requests</a>
+</nav>
+
+<main>
+<div id="main-view">
+<section id="leadership" class="reveal"><h2>👑 Organization Leadership</h2>
+<div class="leadership-grid">
+<div class="card tilt" style="text-align:center"><img src="adnan.jpg" alt="Adnan Ahmad" class="profile-img" onerror="this.style.display='none'"/><h3>ADNAN AHMAD</h3><p class="highlight">Founder & CEO</p><p style="font-size:.9rem"><strong>Motto:</strong> CODE THE FUTURE.</p></div>
+<div class="card tilt" style="text-align:center"><img src="adil.jpg" alt="Adil Ahmad" class="profile-img" onerror="this.style.display='none'"/><h3>ADIL AHMAD</h3><p class="highlight">Chief Social Media Strategist</p><p style="font-size:.9rem">Media & Outreach</p></div>
+<div class="card tilt" style="text-align:center"><img src="adeeb.jpg" alt="Adeeb Ahmad" class="profile-img" onerror="this.style.display='none'"/><h3>ADEEB AHMAD</h3><p class="highlight">Technology Explorer</p><p style="font-size:.9rem">Innovation & Research</p></div>
+</div></section>
+
+<section id="divisions" class="reveal"><h2>🤖 Main Divisions</h2><div class="card"><ul class="grid-list"><li class="grid-item">Robotics Division</li><li class="grid-item">AI Division</li><li class="grid-item">Embedded Systems</li><li class="grid-item">Cybersecurity</li><li class="grid-item">Software & App Dev</li></ul></div></section>
+
+<section id="skills" class="reveal"><h2>⚡ Technical Skills</h2><div class="card"><ul class="grid-list"><li class="grid-item">Arduino & C++</li><li class="grid-item">Python & MicroPython</li><li class="grid-item">HTML, CSS, JS</li><li class="grid-item">Kotlin Android</li><li class="grid-item">PictoBlox AI</li><li class="grid-item">Scratch Logic</li><li class="grid-item">ESP8266 & HC-05</li><li class="grid-item">Sensors & LCD</li><li class="grid-item">3D Design & CAD</li><li class="grid-item">Ethical Hacking</li></ul></div></section>
+
+<section id="programming-tutorials" class="reveal"><h2>📚 Programming Tutorials</h2>
+<p class="muted">Complete stack for robotics, web and mobile.</p>
+<div class="card"><h3 class="cyan">⚡ C++ (Arduino)</h3><pre><code>const int ledPin=13;
+void setup(){pinMode(ledPin,OUTPUT);}
+void loop(){digitalWrite(ledPin,HIGH);delay(1000);digitalWrite(ledPin,LOW);delay(1000);}</code></pre></div>
+<div class="card"><h3 class="cyan">🐍 Python (AI)</h3><pre><code>from machine import Pin
+led=Pin(2,Pin.OUT)
+if 15<20: print("Obstacle!"); led.value(1)</code></pre></div>
+<div class="card"><h3 class="cyan">🌐 HTML + CSS + JS</h3><pre><code>&lt;button id="btn-forward"&gt;Move Forward&lt;/button&gt;
+document.getElementById('btn-forward').onclick=()=>console.log("FORWARD");</code></pre></div>
+<div class="card"><h3 class="cyan">📱 Kotlin</h3><pre><code>btnConnect.setOnClickListener{
+  statusText.text="Connecting to Robot..."
+}</code></pre></div>
+<div class="card"><h3 class="cyan">🗄️ SQL</h3><pre><code>SELECT project_name,time FROM project_submissions
+WHERE category='Robotics' ORDER BY time DESC;</code></pre></div>
+</section>
+
+<section id="projects" class="reveal"><h2>🏆 Completed Projects & Builds</h2>
+<p class="muted">Click any project to see pinouts, code, battery options and live pricing.</p>
+<div class="card"><div class="projects-grid">
+<div class="project-card tilt" onclick="openProject('car')"><div><h3>ESP8266 2WD Bluetooth RC Car</h3><p>2WD robot via HC-05 with PWM speed control.</p></div><div class="project-price-tag"><span>₹1,188</span><span class="click-hint">View & Buy →</span></div></div>
+<div class="project-card tilt" onclick="openProject('joystick')"><div><h3>Arduino PS2 Bluetooth Remote</h3><p>PS2 joysticks + LCD + servo gauge.</p></div><div class="project-price-tag"><span>₹1,063</span><span class="click-hint">View & Buy →</span></div></div>
+<div class="project-card tilt" onclick="openProject('radar')"><div><h3>Ultrasonic Radar Scanner</h3><p>180° servo sweep mapping.</p></div><div class="project-price-tag"><span>₹813</span><span class="click-hint">View & Buy →</span></div></div>
+<div class="project-card tilt" onclick="openProject('plant')"><div><h3>Smart Plant Monitor</h3><p>Auto pump on soil moisture.</p></div><div class="project-price-tag"><span>₹688</span><span class="click-hint">View & Buy →</span></div></div>
+<div class="project-card tilt" onclick="openProject('alarm')"><div><h3>Motion Security Alarm</h3><p>PIR + relay instant alert.</p></div><div class="project-price-tag"><span>₹600</span><span class="click-hint">View & Buy →</span></div></div>
+<div class="project-card tilt" onclick="openProject('weather')"><div><h3>Micro Weather Station</h3><p>Temp + humidity tracker.</p></div><div class="project-price-tag"><span>₹738</span><span class="click-hint">View & Buy →</span></div></div>
+<div class="project-card tilt" onclick="openProject('pump')"><div><h3>Water Pump Automation</h3><p>Prevents dry running.</p></div><div class="project-price-tag"><span>₹900</span><span class="click-hint">View & Buy →</span></div></div>
+<div class="project-card tilt" onclick="openProject('lamp')"><div><h3>Automatic Night Lamp</h3><p>LDR based auto light.</p></div><div class="project-price-tag"><span>₹475</span><span class="click-hint">View & Buy →</span></div></div>
+</div></div></section>
+
+<section id="science-fair" class="reveal"><h2>🎓 Science Fair Exhibition Packs</h2>
+<p class="muted">Ready-to-present models with chart + viva guide.</p>
+<div class="projects-grid">
+<div class="science-fair-card tilt"><div><h3>🦯 Smart Blind Stick</h3><p class="muted small">Buzzer + vibration obstacle detector.</p><ul class="tick"><li>Working Model</li><li>Chart</li><li>Viva Card</li></ul></div><div><div class="project-price-tag"><span>₹750</span><span class="ready">Ready-to-Demo</span></div><a class="whatsapp-btn" target="_blank" href="https://wa.me/918281349340?text=Hi%20Adnan!%20I%20want%20Blind%20Stick%20Pack">💬 Order on WhatsApp</a></div></div>
+<div class="science-fair-card tilt"><div><h3>🗑️ Smart Dustbin</h3><p class="muted small">Auto servo lid with ultrasonic.</p><ul class="tick"><li>Servo + Sensor</li><li>Q&A Guide</li><li>Battery Incl.</li></ul></div><div><div class="project-price-tag"><span>₹690</span><span class="ready">Ready-to-Demo</span></div><a class="whatsapp-btn" target="_blank" href="https://wa.me/918281349340?text=Hi%20Adnan!%20I%20want%20Smart%20Dustbin%20Pack">💬 Order on WhatsApp</a></div></div>
+<div class="science-fair-card tilt"><div><h3>🚗 Anti-Sleep Driver Alert</h3><p class="muted small">Siren when driver sleeps.</p><ul class="tick"><li>Tested System</li><li>Circuit Report</li><li>Pre-coded MCU</li></ul></div><div><div class="project-price-tag"><span>₹820</span><span class="ready">Ready-to-Demo</span></div><a class="whatsapp-btn" target="_blank" href="https://wa.me/918281349340?text=Hi%20Adnan!%20I%20want%20Anti-Sleep%20Pack">💬 Order on WhatsApp</a></div></div>
+<div class="science-fair-card tilt"><div><h3>🏠 Bluetooth Home Automation</h3><p class="muted small">Control lights/fan via app.</p><ul class="tick"><li>Relay + HC-05</li><li>Free APK</li><li>Demo Guide</li></ul></div><div><div class="project-price-tag"><span>₹950</span><span class="ready">Ready-to-Demo</span></div><a class="whatsapp-btn" target="_blank" href="https://wa.me/918281349340?text=Hi%20Adnan!%20I%20want%20Smart%20Home%20Pack">💬 Order on WhatsApp</a></div></div>
+</div></section>
+
+<section id="components-store" class="reveal"><h2>📦 Order Individual Components</h2>
+<p class="muted">Select genuine boards & sensors with live 25% margin pricing.</p>
+<div class="card">
+<div class="pricing-box" style="margin-top:0;margin-bottom:20px">
+<div class="price-label">Live Component Price Calculator</div>
+<div class="price-main"><span id="comp-total-display">₹488</span><span class="price-sub">(Incl. taxes & 25% margin)</span></div>
+<div class="badge-profit">✔ 25% Testing & Margin Applied</div>
+<div class="delivery-notice">🚚 Delivery Fee: <strong>Announced later by address</strong></div>
+<div class="base-line">Base: <span id="comp-base-display">₹390</span> | Profit 25%: <span id="comp-profit-display">₹98</span></div>
+</div>
+<form id="component-order-form" onsubmit="handleComponentSubmit(event)">
+<div class="form-group"><label>Select Component:</label><select id="comp_item" onchange="updateComponentPrice()">
+<option value="Arduino Uno R3 Microcontroller Board" data-price="390">Arduino Uno R3 (Base ₹390)</option>
+<option value="ESP8266 NodeMCU Wi-Fi Board" data-price="320">ESP8266 NodeMCU (Base ₹320)</option>
+<option value="ESP32 Dual-Core Board" data-price="480">ESP32 Dual-Core (Base ₹480)</option>
+<option value="Arduino Nano V3" data-price="260">Arduino Nano V3 (Base ₹260)</option>
+<option value="HC-05 Bluetooth Module" data-price="290">HC-05 Bluetooth (Base ₹290)</option>
+<option value="L298N Motor Driver" data-price="190">L298N Driver (Base ₹190)</option>
+<option value="HC-SR04 Ultrasonic Sensor" data-price="130">HC-SR04 (Base ₹130)</option>
+<option value="SG90 Servo 9g" data-price="140">SG90 Servo (Base ₹140)</option>
+<option value="DHT11 Sensor" data-price="120">DHT11 (Base ₹120)</option>
+<option value="Soil Moisture Sensor" data-price="110">Soil Sensor (Base ₹110)</option>
+<option value="5V Relay Module" data-price="90">5V Relay (Base ₹90)</option>
+<option value="16x2 I2C LCD" data-price="240">16x2 I2C LCD (Base ₹240)</option>
+<option value="Other Custom Component" data-price="200">Other Custom (Base ₹200)</option>
+</select></div>
+<div class="form-group"><label>Quantity:</label><input type="number" id="comp_quantity" value="1" min="1" max="50" oninput="updateComponentPrice()" /></div>
+<div class="customization-box"><div class="form-group" style="margin:0"><label>✏️ Specifications:</label><p class="muted small">Headers soldered? Cable? Test code?</p><textarea id="comp_customization" placeholder="e.g. Uno with Type-B cable, headers soldered, 5 jumpers..."></textarea></div></div>
+<div class="form-group"><label>Full Name:</label><input id="comp_user_name" required placeholder="Your name"/></div>
+<div class="form-group"><label>Email:</label><input id="comp_user_email" type="email" required placeholder="name@example.com"/></div>
+<div class="form-group"><label>Phone:</label><input id="comp_user_phone" required placeholder="+91 XXXXXXXXXX"/></div>
+<div class="form-group"><label>Delivery Address:</label><input id="comp_user_address" required placeholder="City, State, Pincode"/></div>
+<button class="submit-btn" type="submit">🛒 Save Order (<span id="comp-btn-display">₹488</span>)</button>
+<button class="whatsapp-btn" type="button" onclick="orderComponentWhatsApp()">💬 Instant Order on WhatsApp</button>
+</form><div id="comp-summary" class="summary-box"></div>
+</div></section>
+
+<section id="free-build-box" class="reveal"><h2>🧠 AI Custom Build Box — Write ANYTHING</h2>
+<p class="muted">Can't find your part? Just type in plain English. AI + Adnan will quote you.</p>
+<div class="card ai-glow-card">
+<div class="ai-thinking-bar"><span class="pulse-dot"></span> NEXUS AI Estimator Active — Type freely below</div>
+<form id="freeform-order-form" onsubmit="handleFreeformSubmit(event)">
+<div class="form-group"><label for="free_items">📝 Describe Any Components / Project (Free Write):</label>
+<textarea id="free_items" required oninput="updateFreeformPreview()" placeholder="Example: I need 2x Arduino Uno, 1x L298N, 10 jumper wires male-male, 1 servo SG90, 7.4V rechargeable battery... OR: I want line follower robot kit under Rs 1500 for school exhibition next week..."></textarea>
+<div id="free-live-count">0 characters</div></div>
+<div class="form-grid-2">
+<div class="form-group"><label>Budget Range:</label><select id="free_budget"><option>Under ₹500</option><option>₹500 - ₹1000</option><option selected>₹1000 - ₹2000</option><option>₹2000 - ₹5000</option><option>₹5000+ / No Limit</option></select></div>
+<div class="form-group"><label>Urgency:</label><select id="free_urgency"><option>Normal (5-7 days)</option><option>Fast (2-3 days)</option><option>Urgent (Tomorrow / Fair)</option></select></div>
+</div>
+<div class="form-grid-2">
+<div class="form-group"><label>Full Name:</label><input id="free_name" required placeholder="Your name"/></div>
+<div class="form-group"><label>Phone:</label><input id="free_phone" required placeholder="+91 XXXXXXXXXX"/></div>
+</div>
+<div class="form-group"><label>Delivery City & Address:</label><input id="free_address" required placeholder="City, State, Pincode"/></div>
+<div id="free-preview-box" class="free-preview">✨ Live Preview: Start typing above, your order draft will appear here...</div>
+<button class="submit-btn" type="submit">🚀 Submit Free-Write Order</button>
+<button class="whatsapp-btn" type="button" onclick="orderFreeformWhatsApp()">💬 Send This on WhatsApp Instantly</button>
+</form><div id="free-summary" class="summary-box"></div>
+</div></section>
+
+<section id="custom-request" class="reveal"><h2>🚀 Request Custom Software / Web / Game</h2>
+<p class="muted">Web apps, games, SQL, Kotlin apps, AI systems.</p>
+<div class="card"><form id="custom-dev-form" onsubmit="handleCustomSubmit(event)">
+<div class="form-group"><label>Full Name:</label><input id="custom_name" required placeholder="Your name"/></div>
+<div class="form-group"><label>Email:</label><input id="custom_email" type="email" required placeholder="name@example.com"/></div>
+<div class="form-group"><label>Phone:</label><input id="custom_phone" required placeholder="+91 XXXXXXXXXX"/></div>
+<div class="form-group"><label>Category:</label><select id="custom_type"><option>Website / Web App</option><option>Game (Scratch, Unity C#)</option><option>Database & SQL</option><option>Android App (Kotlin)</option><option>Robotics & AI Code</option><option>Other Software</option></select></div>
+<div class="form-group"><label>Details:</label><textarea id="custom_details" required placeholder="Features, platform, deadline..."></textarea></div>
+<div class="form-group"><label>Use Case:</label><input id="custom_org" required placeholder="School / Business / Hobby"/></div>
+<button class="submit-btn" type="submit">Send Request</button>
+<button class="whatsapp-btn" type="button" onclick="orderCustomDevWhatsApp()">💬 Discuss on WhatsApp</button>
+</form><div id="custom-summary" class="summary-box"></div></div></section>
+</div>
+
+<div id="project-detail-view"><button class="back-btn" onclick="showMainPage()">← Back</button><section id="detail-content"></section></div>
+<div id="admin-view"><button class="back-btn" onclick="showMainPage()">← Back</button><section><h2>📬 Live Submissions Panel</h2><p class="muted">Authorized Portal</p><button class="submit-btn" style="width:auto;margin-bottom:20px" onclick="fetchSubmissions()">🔄 Refresh</button><div id="submissions-list"></div></section></div>
+</main>
+
+<footer><h3>NEXUSDEV TECHNOLOGIES © 2026</h3><p>Designed by ADNAN AHMAD</p><div class="contact-info"><p><strong>Phone/WhatsApp:</strong> +91 8281349340 | <strong>Email:</strong> adnandev2026@gmail.com</p></div>
+<div class="social-container"><a class="instagram-badge" target="_blank" href="https://www.instagram.com/_adnanahmad._/">Founder: @_adnanahmad._</a><a class="instagram-badge" target="_blank" href="https://www.instagram.com/nexusdev.technologies/">Org: @nexusdev.technologies</a></div></footer>
+<script src="script.js"></script>
+</body>
+</html>

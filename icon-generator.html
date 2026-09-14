@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>NexusDev Icon Generator</title>
+<style>
+  body{background:#111;color:#fff;font-family:sans-serif;text-align:center;padding:40px;}
+  canvas{border:2px solid #00f5ff;margin:15px;border-radius:20px;}
+  button{background:#00f5ff;color:#000;border:0;padding:12px 24px;border-radius:8px;font-weight:800;cursor:pointer;margin:10px;font-size:1rem;}
+  button:hover{background:#ffbe0b;}
+</style>
+</head>
+<body>
+<h1>🎨 NexusDev Icon Generator</h1>
+<p>Click the buttons below to download your app icons</p>
+
+<div>
+  <canvas id="icon512" width="512" height="512"></canvas>
+  <br>
+  <button onclick="download('icon512','icon-512.png')">⬇️ Download icon-512.png</button>
+</div>
+
+<div>
+  <canvas id="icon192" width="192" height="192"></canvas>
+  <br>
+  <button onclick="download('icon192','icon-192.png')">⬇️ Download icon-192.png</button>
+</div>
+
+<script>
+function drawIcon(canvasId, size){
+  const c = document.getElementById(canvasId);
+  const ctx = c.getContext('2d');
+  const cx = size/2, cy = size/2;
+
+  // Background - dark cyberpunk gradient
+  const grad = ctx.createLinearGradient(0,0,size,size);
+  grad.addColorStop(0, '#020617');
+  grad.addColorStop(0.5, '#082f49');
+  grad.addColorStop(1, '#0369a1');
+  ctx.fillStyle = grad;
+  roundRect(ctx, 0, 0, size, size, size*0.18);
+  ctx.fill();
+
+  // Outer glow circle
+  ctx.shadowColor = '#00f5ff';
+  ctx.shadowBlur = size*0.08;
+  ctx.beginPath();
+  ctx.arc(cx, cy, size*0.4, 0, Math.PI*2);
+  ctx.strokeStyle = '#00f5ff';
+  ctx.lineWidth = size*0.025;
+  ctx.stroke();
+
+  // Polygon (rocket/arrow shape)
+  ctx.shadowBlur = size*0.04;
+  ctx.beginPath();
+  ctx.moveTo(cx, cy - size*0.32);
+  ctx.lineTo(cx + size*0.28, cy + size*0.28);
+  ctx.lineTo(cx, cy + size*0.14);
+  ctx.lineTo(cx - size*0.28, cy + size*0.28);
+  ctx.closePath();
+  ctx.fillStyle = 'rgba(0,245,255,0.9)';
+  ctx.fill();
+
+  // Center circle
+  ctx.shadowBlur = 0;
+  ctx.beginPath();
+  ctx.arc(cx, cy - size*0.08, size*0.09, 0, Math.PI*2);
+  ctx.fillStyle = '#020617';
+  ctx.fill();
+  ctx.lineWidth = size*0.018;
+  ctx.strokeStyle = '#00f5ff';
+  ctx.stroke();
+}
+
+function roundRect(ctx, x, y, w, h, r){
+  ctx.beginPath();
+  ctx.moveTo(x+r, y);
+  ctx.arcTo(x+w, y, x+w, y+h, r);
+  ctx.arcTo(x+w, y+h, x, y+h, r);
+  ctx.arcTo(x, y+h, x, y, r);
+  ctx.arcTo(x, y, x+w, y, r);
+  ctx.closePath();
+}
+
+function download(canvasId, filename){
+  const canvas = document.getElementById(canvasId);
+  const link = document.createElement('a');
+  link.download = filename;
+  link.href = canvas.toDataURL('image/png');
+  link.click();
+}
+
+drawIcon('icon512', 512);
+drawIcon('icon192', 192);
+</script>
+</body>
+</html>
